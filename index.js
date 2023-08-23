@@ -1,10 +1,10 @@
 const express = require("express")
 const mongoose = require("mongoose")
+require('dotenv').config()
 const sleepingFrameRouter = require("./sleepingFrame.routes")
 const cors = require("cors")
 const app = express()
 const PORT = process.env.PORT || 5000
-const dbUrl = process.env.DBURL;
 
 app.use(cors())
 app.use(express.json())
@@ -12,7 +12,7 @@ app.use("/sleeping", sleepingFrameRouter)
 
 const start = async () => {
     try {
-        await mongoose.connect(dbUrl, {
+        await mongoose.connect(process.env.DBURL, {
             useNewUrlParser:true,
             useUnifiedTopology:true
         })
