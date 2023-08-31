@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 require('dotenv').config()
 const sleepingFrameRouter = require("./sleepingFrame.routes")
+const movementFrameRouter = require("./movementFrame.routes")
 const authRouter = require("./auth.routes")
 const cors = require("cors")
 const app = express()
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
 app.use("/sleeping", sleepingFrameRouter)
+app.use("/movement", movementFrameRouter)
 app.use("/auth", authRouter)
 
 const start = async () => {
